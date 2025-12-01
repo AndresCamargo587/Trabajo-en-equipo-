@@ -17,22 +17,21 @@ public class Main {
 
         switch (opcion) {
             case 1:
-                Triqui.();
+                new Triqui();
                 break;
             case 2:
-                Calculadora.();
+                new Calculadora();
                 break;
             case 3:
-                Parejaslocas.();
+                new Parejaslocas();
                 break;
             case 4:
-                Ahorcado.();
+                new Ahorcado();
                 break;
             case 5:
                 return;
-
         }
     }
-}
+} }
 
 
