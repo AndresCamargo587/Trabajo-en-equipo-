@@ -1,37 +1,42 @@
 import java.util.Scanner;
 public class Main {
+    static Scanner leer = new Scanner(System.in);
+    static String name;
+
     public static void main(String[] args) {
+        System.out.println("Bienvenido, a continuación ingrese su nombre");
         Scanner leer = new Scanner(System.in);
+        name = leer.nextLine();
+        int opcion;
 
-        while(true) {
+        do {
+            System.out.println(name + ", ingrese el numero del juego que desea lanzar. \n" +
+                    "1. Triqui.\n" +
+                    "2. Calculadora.\n" +
+                    "3. Parejas locas.\n" +
+                    "4. Ahorcado.\n" +
+                    "0. Salir del menú.");
 
-        System.out.println("Menu");
-        System.out.println("1. Triqui");
-        System.out.println("2. Calculadora");
-        System.out.println("3. Parejas locas");
-        System.out.println("4. Ahorcado");
-        System.out.println("5. Salir");
-        System.out.print("Seleccione una opción: ");
+            opcion = leer.nextInt();
 
-        int opcion = leer.nextInt();
-
-        switch (opcion) {
-            case 1:
-                new Triqui();
-                break;
-            case 2:
-                new Calculadora();
-                break;
-            case 3:
-                new Parejaslocas();
-                break;
-            case 4:
-                new Ahorcado();
-                break;
-            case 5:
-                return;
+            switch (opcion) {
+                case 1:
+                    new Triqui();
+                    break;
+                case 2:
+                    new Calculadora();
+                    break;
+                case 3:
+                    new Parejaslocas();
+                    break;
+                case 4:
+                    new Ahorcado();
+                    break;
+                case 5:
+                    return;
+            }
         }
     }
-} }
+}
 
 
