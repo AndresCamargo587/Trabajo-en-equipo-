@@ -35,8 +35,11 @@ public class Main {
                 case 5:
                     return;
             }
-        }
+        } while (opcion != 0);
     }
 }
+
+
+
 
 
