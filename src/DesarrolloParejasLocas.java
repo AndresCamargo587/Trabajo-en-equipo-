@@ -44,6 +44,60 @@ public class DesarrolloParejasLocas extends JFrame {
 
         return letrasTemp;
     }
+    private class BotonListener implements ActionListener {
+        private final int indice;
 
+        public BotonListener(int indice) {
+            this.indice = indice;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (botones[indice].getText().equals(letras[indice])) {
+                return;
+            }
+
+            if (primerBoton != -1 && segundoBoton != -1) {
+                return;
+            }
+
+            botones[indice].setText(letras[indice]);
+            botones[indice].setEnabled(false);
+
+            if (primerBoton == -1) {
+                primerBoton = indice;
+            } else {
+                segundoBoton = indice;
+
+                if (letras[primerBoton].equals(letras[segundoBoton])) {
+                    paresEncontrados++;
+
+                    if (paresEncontrados == 8) {
+                        JOptionPane.showMessageDialog(null,
+                                "¡Felicidades! Has encontrado todas las parejas.");
+                    }
+
+                    primerBoton = -1;
+                    segundoBoton = -1;
+                } else {
+                    Timer timer = new Timer(500, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            botones[primerBoton].setText("?");
+                            botones[segundoBoton].setText("?");
+                            botones[primerBoton].setEnabled(true);
+                            botones[segundoBoton].setEnabled(true);
+
+                            primerBoton = -1;
+                            segundoBoton = -1;
+                        }
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                }
+            }
+        }
+    }
+}
 
 

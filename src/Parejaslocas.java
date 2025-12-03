@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class Parejaslocas {
+public class Parejaslocas extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             DesarrolloParejasLocas juego = new DesarrolloParejasLocas();
