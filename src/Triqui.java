@@ -43,4 +43,86 @@ public class Triqui extends JFrame implements ActionListener {
 
         setVisible(true);
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton boton = (JButton) e.getSource();
 
+        if (!boton.getText().equals("")) {
+            return;
+        }
+
+        if (turnoX) {
+            boton.setText("X");
+            estado.setText("Turno de O");
+        } else {
+            boton.setText("O");
+            estado.setText("Turno de X");
+        }
+
+        turnoX = !turnoX;
+
+        if (hayGanador()) {
+            estado.setText("Ganador: " + (turnoX ? "O" : "X") + "!");
+            deshabilitarBotones();
+        } else if (tableroLleno()) {
+            estado.setText("Empate");
+        }
+    }
+
+    private boolean hayGanador() {
+        for (int i = 0; i < 3; i++) {
+            if (!botones[i][0].getText().equals("") &&
+                    botones[i][0].getText().equals(botones[i][1].getText()) &&
+                    botones[i][1].getText().equals(botones[i][2].getText())) {
+                return true;
+            }
+            if (!botones[0][i].getText().equals("") &&
+                    botones[0][i].getText().equals(botones[1][i].getText()) &&
+                    botones[1][i].getText().equals(botones[2][i].getText())) {
+                return true;
+            }
+        }
+        if (!botones[0][0].getText().equals("") &&
+                botones[0][0].getText().equals(botones[1][1].getText()) &&
+                botones[1][1].getText().equals(botones[2][2].getText())) {
+            return true;
+        }
+        if (!botones[0][2].getText().equals("") &&
+                botones[0][2].getText().equals(botones[1][1].getText()) &&
+                botones[1][1].getText().equals(botones[2][0].getText())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean tableroLleno() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (botones[i][j].getText().equals("")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void deshabilitarBotones() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                botones[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    private void reiniciarJuego() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                botones[i][j].setText("");
+                botones[i][j].setEnabled(true);
+            }
+        }
+        turnoX = true;
+        estado.setText("Turno de X");
+    }
+}
