@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.swing.*;
 public class Main {
     static Scanner leer = new Scanner(System.in);
     static String name;
@@ -27,7 +28,13 @@ public class Main {
                     new Calculadora();
                     break;
                 case 3:
-                    new Parejaslocas();
+                    System.out.println("Cargando...");
+                    SwingUtilities.invokeLater(() -> {
+                        InstruccionesParejasLocas instrucciones = new InstruccionesParejasLocas();
+                        instrucciones.setVisible(true);
+                        DesarrolloParejasLocas juego = new DesarrolloParejasLocas();
+                        juego.setVisible(true);
+                    });
                     break;
                 case 4:
                     new Ahorcado();
