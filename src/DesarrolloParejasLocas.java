@@ -31,6 +31,19 @@ public class DesarrolloParejasLocas extends JFrame {
             panelPrincipal.add(botones[i]);
         }
     }
+    private String[] generarLetras() {
+        String[] letrasTemp = {"X", "X", "J", "J", "C", "C", "N", "N",
+                "E", "E", "L", "L", "Z", "Z", "I", "I"};
+
+        for (int i = 0; i < letrasTemp.length; i++) {
+            int posicionAleatoria = (int) (Math.random() * letrasTemp.length);
+            String temp = letrasTemp[i];
+            letrasTemp[i] = letrasTemp[posicionAleatoria];
+            letrasTemp[posicionAleatoria] = temp;
+        }
+
+        return letrasTemp;
+    }
 
 
 
