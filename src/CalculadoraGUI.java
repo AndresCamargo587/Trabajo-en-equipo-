@@ -37,5 +37,47 @@ public class CalculadoraGUI extends JFrame implements ActionListener {
         }
 
         add(panelBotones, BorderLayout.CENTER);
-    }}
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String comando = e.getActionCommand();
+
+        if (comando.charAt(0) >= '0' && comando.charAt(0) <= '9') {
+            display.setText(display.getText() + comando);
+        } else if (comando.equals("C")) {
+            display.setText("");
+            num1 = num2 = resultado = 0;
+        } else if (comando.equals("=")) {
+            num2 = Double.parseDouble(display.getText());
+            switch (operador) {
+                case '+': resultado = num1 + num2; break;
+                case '-': resultado = num1 - num2; break;
+                case '*': resultado = num1 * num2; break;
+                case '/':
+                    if (num2 != 0) {
+                        resultado = num1 / num2;
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Error: División por cero");
+                        resultado = 0;
+                    }
+                    break;
+            }
+            display.setText(String.valueOf(resultado));
+            num1 = resultado;
+        } else {
+            if (!display.getText().isEmpty()) {
+                num1 = Double.parseDouble(display.getText());
+                operador = comando.charAt(0);
+                display.setText("");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            CalculadoraGUI calc = new CalculadoraGUI();
+            calc.setVisible(true);
+        });
+    }
+}
 
