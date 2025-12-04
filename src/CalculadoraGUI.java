@@ -37,5 +37,5 @@ public class CalculadoraGUI extends JFrame implements ActionListener {
         }
 
         add(panelBotones, BorderLayout.CENTER);
-    }
+    }}
 
