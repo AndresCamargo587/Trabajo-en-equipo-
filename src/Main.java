@@ -25,7 +25,8 @@ public class Main {
                     new Triqui();
                     break;
                 case 2:
-                    new Calculadora();
+                    CalculadoraGUI calc = new CalculadoraGUI();
+                    calc.setVisible(true);
                     break;
                 case 3:
                     System.out.println("Cargando...");
