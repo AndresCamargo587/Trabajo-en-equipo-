@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class InstruccionesAhorcado extends JFrame {
     public InstruccionesAhorcado() {
-        setTitle("Instrucciones del Ahorcado");
+        setTitle("Instrucciones del Ahorcado / Tematica de animales.");
         setSize(400, 350);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);

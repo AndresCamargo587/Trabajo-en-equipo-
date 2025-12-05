@@ -38,7 +38,12 @@ public class Main {
                     });
                     break;
                 case 4:
-                    new Ahorcado();
+                    SwingUtilities.invokeLater(() -> {
+                    InstruccionesAhorcado instrucciones = new InstruccionesAhorcado();
+                    instrucciones.setVisible(true);
+                    Ahorcado juego = new Ahorcado();
+                    juego.setVisible(true);
+                    });
                     break;
 
                 case 0:
