@@ -39,10 +39,15 @@ public class Main {
                 case 4:
                     new Ahorcado();
                     break;
-                case 5:
-                    return;
+
+                case 0:
+                    System.out.println(name + ", hasta luego");
+                    break;
+                default:
+                    System.out.println(name + ", la opción que ingresó no es válida, inténtelo de nuevo");
+
             }
-        } while (opcion != 0);
+        }while (opcion > 0) ;
     }
 }
 
