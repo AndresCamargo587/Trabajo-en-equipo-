@@ -70,5 +70,61 @@ public class Ahorcado extends JFrame {
 
         add(panelLetras, BorderLayout.SOUTH);
     }
+    private class AccionLetra implements ActionListener {
+        private char letra;
 
+        public AccionLetra(char letra) {
+            this.letra = letra;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ((JButton)e.getSource()).setEnabled(false);
+            adivinarLetra(letra);
+        }
+    }
+
+    private void adivinarLetra(char letra) {
+        boolean acerto = false;
+        StringBuilder nuevaPalabra = new StringBuilder();
+
+        for (int i = 0; i < palabraSecreta.length(); i++) {
+            if (palabraSecreta.charAt(i) == letra) {
+                nuevaPalabra.append(letra).append(" ");
+                acerto = true;
+            } else {
+                nuevaPalabra.append(palabraAdivinada.charAt(i * 2)).append(" ");
+            }
+        }
+
+        palabraAdivinada = nuevaPalabra;
+        lblPalabra.setText(palabraAdivinada.toString());
+
+        if (acerto) {
+            lblMensaje.setText("La letra " + letra + " está en la palabra");
+
+            if (!palabraAdivinada.toString().contains("_")) {
+                lblMensaje.setText("La palabra era: " + palabraSecreta+". Ganaste!!!");
+                deshabilitarTeclado();
+            }
+        } else {
+            intentosRestantes--;
+            lblIntentos.setText("Intentos: " + intentosRestantes);
+            lblMensaje.setText("La letra " + letra + " no está en la palabra.");
+
+            if (intentosRestantes == 0) {
+                lblMensaje.setText("La palabra era: " + palabraSecreta + ". Perdiste:(");
+                deshabilitarTeclado();
+            }
+        }
+    }
+
+    private void deshabilitarTeclado() {
+        for (Component comp : panelLetras.getComponents()) {
+            if (comp instanceof JButton) {
+                ((JButton)comp).setEnabled(false);
+            }
+        }
+    }
+}
 
