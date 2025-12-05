@@ -17,7 +17,7 @@ public class InstruccionesAhorcado extends JFrame {
         panel.add(titulo, BorderLayout.NORTH);
 
         JTextArea instrucciones = new JTextArea();
-        instrucciones.setText("JUEGO DEL AHORCADO\n\n" +
+        instrucciones.setText("JUEGO DEL AHORCADO CON ANIMALES\n\n" +
                 "Adivina la palabra secreta antes de\n" +
                 "quedarte sin intentos.\n\n" +
                 "1. Se muestra una palabra con guiones.\n" +
